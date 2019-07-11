@@ -3,6 +3,7 @@ package com.rameshcodeworks.recyclerviewwithmultipleview;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,7 +59,13 @@ public class EmployeeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public int getItemViewType(int position) {
-        return super.getItemViewType(position);
+
+        if (TextUtils.isEmpty(employeeArrayList.get(position).getEmail())) {
+            return TYPE_CALL;
+
+        } else {
+            return TYPE_EMAIL;
+        }
     }
 
     class CallViewHolder extends RecyclerView.ViewHolder {
